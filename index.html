@@ -1,159 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RekruitHub</title>
-    <link rel="icon" type="image/png" href="images/rh-favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <meta name="description" content="Rekruit is your trusted partner in recruitment, connecting talented professionals with top companies.">
-    <meta name="keywords" content="Recruitment, Jobs, Career, Employment, Hiring">
-    <meta name="author" content="Rekruit">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-size: 1.1rem; /* Slightly increase base font size */
-            color: #ffffff; /* Set text color to bright white */
-        }
-        .header-bg {
-            background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-            padding: 0.3rem 0; /* Further reduce header padding */
-        }
-        .home-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/home.jpg') no-repeat center center;
-            background-size: cover;
-        }
-        .about-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/about-us.jpg') no-repeat center center;
-            background-size: cover;
-        }
-        .contact-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/contact-us.jpg') no-repeat center center;
-            background-size: cover;
-        }
-        .section-spacing {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-        }
-        .shadow-lg {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .hover-scale {
-            transition: transform 0.2s;
-        }
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-        .bg-overlay {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-        .header-logo {
-            height: 3rem; /* Keep logo size */
-        }
-        h1, h2, h3 {
-            font-size: 1.3em; /* Adjust heading sizes */
-            color: #ffffff; /* Ensure headings are white */
-        }
-        p {
-            font-size: 1.1em; /* Adjust paragraph sizes */
-            color: #ffffff; /* Ensure paragraphs are white */
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
+    <link rel="icon" type="image/png" href="images/rh-favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <meta
+      name="description"
+      content="Rekruit is your trusted partner in recruitment, connecting talented professionals with top companies."
+    />
+    <meta
+      name="keywords"
+      content="Recruitment, Jobs, Career, Employment, Hiring"
+    />
+    <meta name="author" content="Rekruit" />
+  </head>
+  <body class="bg-gray-100">
     <!-- Header -->
     <header class="header-bg text-white shadow-md fixed w-full z-10">
-        <div class="container mx-auto flex justify-between items-center p-2"> <!-- Further adjusted padding -->
-            <div class="flex items-center">
-                <img src="images/rh-logo.png" alt="Rekruit Logo" class="header-logo">
-            </div>
-            <nav class="flex space-x-6">
-                <a href="#home" class="hover:text-yellow-400 flex items-center" aria-label="Home"><img src="https://img.icons8.com/material-rounded/24/ffffff/home.png" class="mr-2"/>Home</a>
-                <a href="#about-us" class="hover:text-yellow-400 flex items-center" aria-label="About Us"><img src="https://img.icons8.com/material-rounded/24/ffffff/info.png" class="mr-2"/>About Us</a>
-                <a href="#contact-us" class="hover:text-yellow-400 flex items-center" aria-label="Contact Us"><img src="https://img.icons8.com/material-rounded/24/ffffff/phone.png" class="mr-2"/>Contact Us</a>
-            </nav>
+      <div class="w-full flex justify-between items-center p-4">
+        <div class="flex items-center">
+          <img
+            src="images/rh-logo.png"
+            alt="Rekruit Logo"
+            class="header-logo"
+          />
         </div>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#home" class="flex items-center" aria-label="Home">
+            <img
+              src="https://img.icons8.com/material-rounded/24/ffffff/home.png"
+              class="mr-2"
+            />Home
+          </a>
+          <a href="#about-us" class="flex items-center" aria-label="About Us">
+            <img
+              src="https://img.icons8.com/material-rounded/24/ffffff/info.png"
+              class="mr-2"
+            />About Us
+          </a>
+          <a
+            href="#contact-us"
+            class="flex items-center"
+            aria-label="Contact Us"
+          >
+            <img
+              src="https://img.icons8.com/material-rounded/24/ffffff/phone.png"
+              class="mr-2"
+            />Contact Us
+          </a>
+        </nav>
+        <button id="menu-toggle" class="block md:hidden">
+          <img
+            src="https://img.icons8.com/material-rounded/24/ffffff/menu.png"
+          />
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-black text-white flex flex-col space-y-4 p-4"
+      >
+        <a
+          href="#home"
+          class="hover:text-yellow-400 flex items-center"
+          aria-label="Home"
+        >
+          <img
+            src="https://img.icons8.com/material-rounded/24/ffffff/home.png"
+            class="mr-2"
+          />Home
+        </a>
+        <a
+          href="#about-us"
+          class="hover:text-yellow-400 flex items-center"
+          aria-label="About Us"
+        >
+          <img
+            src="https://img.icons8.com/material-rounded/24/ffffff/info.png"
+            class="mr-2"
+          />About Us
+        </a>
+        <a
+          href="#contact-us"
+          class="hover:text-yellow-400 flex items-center"
+          aria-label="Contact Us"
+        >
+          <img
+            src="https://img.icons8.com/material-rounded/24/ffffff/phone.png"
+            class="mr-2"
+          />Contact Us
+        </a>
+      </div>
     </header>
-    
+
     <!-- Home Section -->
-    <section id="home" class="home-bg text-white container mx-auto section-spacing min-h-screen flex items-center justify-center">
-        <div class="bg-overlay shadow-lg text-center">
-            <h1 class="text-4xl font-bold">Welcome to Rekruit</h1>
-            <p class="mt-5">
-                Rekruit has been a leading recruitment agency for over a decade. Our extensive network of industry connections and our commitment to excellence 
-                ensure that we provide the best job opportunities and the most qualified candidates.
-                We work closely with both clients and candidates to understand their unique needs and goals.
-                Our mission is to create successful, long-term relationships that benefit all parties involved.
-            </p>
-        </div>
+    <section
+      id="home"
+      class="home-bg text-white w-full section-spacing min-h-screen flex flex-col items-center justify-center"
+    >
+      <div
+        class="bg-overlay shadow-lg text-center"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-easing="ease-out"
+        data-aos-delay="100"
+      >
+        <h1 class="text-4xl font-bold">Welcome to Rekruit</h1>
+        <p
+          class="mt-5"
+          data-aos="fade-left"
+          data-aos-duration="1100"
+          data-aos-delay="200"
+        >
+          Rekruit has been a leading recruitment agency for over a decade. Our
+          extensive network of industry connections and our commitment to
+          excellence ensure that we provide the best job opportunities and the
+          most qualified candidates.
+        </p>
+        <a
+          href="#about-us"
+          class="mt-8 inline-block text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out learn-more-btn"
+          data-aos="fade-right"
+          data-aos-duration="900"
+          data-aos-delay="300"
+        >
+          Learn More
+        </a>
+      </div>
     </section>
-    
+
     <!-- About Us Section -->
-    <section id="about-us" class="about-bg text-white container mx-auto section-spacing min-h-screen flex items-center justify-center">
-        <div class="bg-overlay shadow-lg text-center">
-            <h2 class="text-3xl font-bold">About Us</h2>
-            <p class="mt-5">
-                Welcome to Rekruit, your trusted partner in recruitment for both IT and non-IT sectors. With over a decade of experience, we excel in matching top talent with leading companies across various industries.
+    <section
+      id="about-us"
+      class="about-bg text-white w-full section-spacing min-h-screen flex items-center justify-center"
+    >
+      <div
+        class="bg-overlay shadow-lg text-center"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-delay="200"
+      >
+        <h2 class="text-3xl font-bold">About Us</h2>
+        <p
+          class="mt-5"
+          data-aos="fade-right"
+          data-aos-duration="1100"
+          data-aos-delay="300"
+        >
+          Welcome to Rekruit, your trusted partner in recruitment for both IT
+          and non-IT sectors.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+          <div
+            class="flex flex-col items-center"
+            data-aos="zoom-in"
+            data-aos-duration="900"
+            data-aos-delay="400"
+          >
+            <h3 class="text-2xl font-bold">IT Recruitment</h3>
+            <p
+              class="mt-5"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="500"
+            >
+              From software developers and data analysts to IT managers and
+              cybersecurity experts, we have a deep understanding of the
+              technology landscape.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-                <div class="flex flex-col items-center">
-                    <h3 class="text-2xl font-bold">IT Recruitment</h3>
-                    <p class="mt-5">
-                        From software developers and data analysts to IT managers and cybersecurity experts, we have a deep understanding of the technology landscape. Our team uses advanced sourcing techniques to find skilled professionals who can drive innovation and success in your organization.
-                    </p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <h3 class="text-2xl font-bold">Non-IT Recruitment</h3>
-                    <p class="mt-5">
-                        We also specialize in non-IT roles, including positions in finance, marketing, sales, and operations. Our extensive network and industry knowledge enable us to identify candidates who fit seamlessly into your company culture and contribute to your business goals.
-                    </p>
-                </div>
-            </div>
-            <h3 class="text-2xl font-bold mt-10">Our Approach</h3>
-            <p class="mt-5">
-                At Rekruit, we believe in a personalized approach to recruitment. We work closely with both clients and candidates to understand their unique needs and objectives. Our goal is to build long-term relationships that benefit all parties, ensuring the perfect match for every role.
+          </div>
+          <div
+            class="flex flex-col items-center"
+            data-aos="zoom-in"
+            data-aos-duration="900"
+            data-aos-delay="500"
+          >
+            <h3 class="text-2xl font-bold">Non-IT Recruitment</h3>
+            <p
+              class="mt-5"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="600"
+            >
+              We also specialize in non-IT roles, including positions in
+              finance, marketing, sales, and operations.
             </p>
+          </div>
         </div>
+        <h3
+          class="text-2xl font-bold mt-10"
+          data-aos="fade-up"
+          data-aos-duration="1100"
+          data-aos-delay="700"
+        >
+          Our Approach
+        </h3>
+        <p
+          class="mt-5"
+          data-aos="fade-up"
+          data-aos-duration="1100"
+          data-aos-delay="800"
+        >
+          At Rekruit, we believe in a personalized approach to recruitment.
+        </p>
+      </div>
     </section>
-    
-    
+
     <!-- Contact Us Section -->
-    <section id="contact-us" class="contact-bg text-white container mx-auto section-spacing flex items-center justify-center">
-        <div class="bg-overlay shadow-lg text-center">
-            <h2 class="text-3xl font-bold">Contact Us</h2>
-            <p class="mt-5">
-                Discover how we can assist with your recruitment needs. Whether you're job hunting or seeking the ideal candidate, our team is ready to help. Reach out today to begin your journey with Rekruit.
-            </p>
-            <!-- Email and Phone Sections -->
-            <div class="flex justify-center space-x-10 mt-10">
-                <div class="flex flex-col items-center">
-                    <img src="https://img.icons8.com/material-rounded/48/ffffff/email.png" alt="Email Icon">
-                    <h3 class="text-2xl font-bold mt-2">Email Us</h3>
-                    <p class="text-gray-200 mt-2">sales@rekruithub.com</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="https://img.icons8.com/material-rounded/48/ffffff/phone.png" alt="Phone Icon">
-                    <h3 class="text-2xl font-bold mt-2">Call Us</h3>
-                    <p class="text-gray-200 mt-2">+91 70191 42004</p>
-                </div>
-            </div>
+    <section
+      id="contact-us"
+      class="contact-bg text-white w-full section-spacing flex items-center justify-center"
+    >
+      <div
+        class="bg-overlay shadow-lg text-center"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-delay="200"
+      >
+        <h2 class="text-3xl font-bold">Contact Us</h2>
+        <p
+          class="mt-5"
+          data-aos="fade-left"
+          data-aos-duration="1100"
+          data-aos-delay="300"
+        >
+          Discover how we can assist with your recruitment needs. Whether you're
+          job hunting or seeking the ideal candidate, our team is ready to help.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10">
+          <div
+            class="flex flex-col items-center"
+            data-aos="zoom-in"
+            data-aos-duration="900"
+            data-aos-delay="400"
+          >
+            <a
+              href="mailto:sales@rekruithub.com"
+              class="hover:text-yellow-400 flex flex-col items-center"
+              aria-label="Email Us"
+            >
+              <img
+                src="https://img.icons8.com/material-rounded/48/ffffff/email.png"
+                alt="Email Icon"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="500"
+              />
+              <h3 class="text-2xl font-bold mt-2">Email Us</h3>
+              <p class="text-gray-200 mt-2">sales@rekruithub.com</p>
+            </a>
+          </div>
+          <div
+            class="flex flex-col items-center"
+            data-aos="zoom-in"
+            data-aos-duration="900"
+            data-aos-delay="500"
+          >
+            <a
+              href="tel:+917019142004"
+              class="hover:text-yellow-400 flex flex-col items-center"
+              aria-label="Call Us"
+            >
+              <img
+                src="https://img.icons8.com/material-rounded/48/ffffff/phone.png"
+                alt="Phone Icon"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="600"
+              />
+              <h3 class="text-2xl font-bold mt-2">Call Us</h3>
+              <p class="text-gray-200 mt-2">+91 70191 42004</p>
+            </a>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Footer -->
-    <footer class="bg-white shadow-md">
-        <div class="container mx-auto p-5 flex justify-between items-center">
-            <span class="text-gray-700">© 2024 RekruitHub. All rights reserved.</span>
-            <div class="flex space-x-6">
-                <a href="#" class="text-gray-700 hover:text-blue-600" aria-label="Facebook"><img src="https://img.icons8.com/material-rounded/24/000000/facebook.png"/></a>
-                <a href="#" class="text-gray-700 hover:text-blue-600" aria-label="Twitter"><img src="https://img.icons8.com/material-rounded/24/000000/twitter.png"/></a>
-                <a href="#" class="text-gray-700 hover:text-blue-600" aria-label="LinkedIn"><img src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"/></a>
-            </div>
+    <footer class="bg-white shadow-md w-full">
+      <div class="w-full p-5 flex justify-between items-center">
+        <span class="text-gray-700"
+          >© 2024 RekruitHub. All rights reserved.</span
+        >
+        <div class="flex space-x-6">
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600"
+            aria-label="Facebook"
+            ><img
+              src="https://img.icons8.com/material-rounded/24/000000/facebook.png"
+          /></a>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600"
+            aria-label="Twitter"
+            ><img
+              src="https://img.icons8.com/material-rounded/24/000000/twitter.png"
+          /></a>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600"
+            aria-label="LinkedIn"
+            ><img
+              src="https://img.icons8.com/material-rounded/24/000000/linkedin.png"
+          /></a>
         </div>
+      </div>
     </footer>
-</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
